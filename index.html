@@ -200,7 +200,7 @@
       .toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
       .toc-item { flex: 1 1 auto; }
       .toc-link { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .toc-sublist { display: none; }
+      .toc-sublist.collapsed { display: none; }
       .grid.cols-3 { grid-template-columns: 1fr; }
     }
 
@@ -907,6 +907,22 @@
       });
       btn.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Collapsible TOC - click section to toggle sub-items
+      const isMobile = window.innerWidth <= 900;
+      document.querySelectorAll('.toc-item').forEach(function(item) {
+        const sublist = item.querySelector('.toc-sublist');
+        if (!sublist) return;
+        const link = item.querySelector('.toc-link');
+        if (link) link.style.cursor = 'pointer';
+        if (isMobile) sublist.classList.add('collapsed');
+        if (link) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            sublist.classList.toggle('collapsed');
+          });
+        }
       });
     });
   </script>
