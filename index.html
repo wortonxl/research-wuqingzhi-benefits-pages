@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>五青汁（Five Green Juice）功效、配方与慢病人群适用性深研报告</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --surface-2: #eef2f8;
+      --text: #121826;
+      --muted: #5b6475;
+      --border: rgba(18, 24, 38, 0.12);
+      --accent: #335cff;
+      --accent-2: #0f766e;
+      --danger: #b42318;
+      --shadow: 0 10px 30px rgba(18, 24, 38, 0.08);
+      --radius: 18px;
+      --maxw: 1120px;
+      --line: 1.65;
+      --sidebar-width: 260px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: var(--line);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: var(--accent); text-decoration: none; word-break: break-word; overflow-wrap: break-word; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 24px 16px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .toc-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc-item {
+      margin-bottom: 8px;
+    }
+
+    .toc-link {
+      display: block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .toc-link:hover {
+      background: var(--surface-2);
+    }
+
+    .toc-link.active {
+      background: var(--accent);
+      color: #1a1a1a;
+    }
+
+    /* Color-coded TOC items — 10 color slots */
+    .toc-item:nth-child(1) .toc-link { border-left: 4px solid #2d6a4f; background: rgba(184, 224, 208, 0.3); }
+    .toc-item:nth-child(2) .toc-link { border-left: 4px solid #1d3557; background: rgba(197, 213, 216, 0.3); }
+    .toc-item:nth-child(3) .toc-link { border-left: 4px solid #457b9d; background: rgba(200, 223, 240, 0.3); }
+    .toc-item:nth-child(4) .toc-link { border-left: 4px solid #4a4e69; background: rgba(192, 201, 208, 0.3); }
+    .toc-item:nth-child(5) .toc-link { border-left: 4px solid #9d4edd; background: rgba(237, 213, 206, 0.3); }
+    .toc-item:nth-child(6) .toc-link { border-left: 4px solid #6c757d; background: rgba(197, 200, 202, 0.3); }
+    .toc-item:nth-child(7) .toc-link { border-left: 4px solid #40916c; background: rgba(192, 230, 208, 0.3); }
+    .toc-item:nth-child(8) .toc-link { border-left: 4px solid #7b2cbf; background: rgba(224, 208, 232, 0.3); }
+    .toc-item:nth-child(9) .toc-link { border-left: 4px solid #d4a373; background: rgba(240, 224, 192, 0.3); }
+    .toc-item:nth-child(10) .toc-link { border-left: 4px solid #5c677d; background: rgba(200, 213, 229, 0.3); }
+
+    .toc-item:nth-child(1) .toc-link.active { background: #b8e0d0; }
+    .toc-item:nth-child(2) .toc-link.active { background: #c5d5d8; }
+    .toc-item:nth-child(3) .toc-link.active { background: #c8dff0; }
+    .toc-item:nth-child(4) .toc-link.active { background: #c0c9d0; }
+    .toc-item:nth-child(5) .toc-link.active { background: #edd5ce; }
+    .toc-item:nth-child(6) .toc-link.active { background: #c5c8ca; }
+    .toc-item:nth-child(7) .toc-link.active { background: #c0e6d0; }
+    .toc-item:nth-child(8) .toc-link.active { background: #e0d0e8; }
+    .toc-item:nth-child(9) .toc-link.active { background: #f0e0c0; }
+    .toc-item:nth-child(10) .toc-link.active { background: #c8d5e5; }
+
+    .toc-sublist {
+      list-style: none;
+      padding-left: 16px;
+      margin: 4px 0 0;
+    }
+
+    .toc-subitem {
+      margin-bottom: 4px;
+    }
+
+    .toc-sublink {
+      font-size: 0.9rem;
+      padding: 4px 8px;
+      color: var(--muted);
+    }
+
+    .toc-sublink:hover {
+      background: var(--surface-2);
+    }
+
+    .toc-sublink.active {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* Main content */
+    .main-content {
+      flex: 1;
+      padding: 24px;
+      max-width: calc(100% - var(--sidebar-width));
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+
+    .hero { padding: 34px 0 18px; }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      max-width: 16ch;
+    }
+
+    .lede {
+      max-width: 70ch;
+      font-size: 1.06rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    @media (max-width: 900px) {
+      .container { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); padding: 16px; }
+      .main-content { max-width: 100%; padding: 16px; }
+      .toc-title { display: none; }
+      .toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+      .toc-item { flex: 1 1 auto; }
+      .toc-link { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .toc-sublist { display: none; }
+      .grid.cols-3 { grid-template-columns: 1fr; }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stat strong { font-size: 1.8rem; letter-spacing: -0.03em; }
+    .stat span { color: var(--muted); }
+
+    /* Content sections — 10 color slots, rotate for >10 */
+    .section {
+      margin: 30px 0;
+      padding: 24px;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--border);
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section h3 {
+      margin: 20px 0 10px;
+      font-size: 1.1rem;
+    }
+
+    /* Section color slots — matches TOC colors */
+    #section-1  { background: #d9eae0; border-left-color: #2d6a4f; }
+    #section-2  { background: #dde6e7; border-left-color: #1d3557; }
+    #section-3  { background: #e4eff7; border-left-color: #457b9d; }
+    #section-4  { background: #d7dfe4; border-left-color: #4a4e69; }
+    #section-5  { background: #f6e9e5; border-left-color: #9d4edd; }
+    #section-6  { background: #dde0e2; border-left-color: #6c757d; }
+    #section-7  { background: #e1f4e8; border-left-color: #40916c; }
+    #section-8  { background: #f0e6f5; border-left-color: #7b2cbf; }
+    #section-9  { background: #fff2d9; border-left-color: #d4a373; }
+    #section-10 { background: #e8f0f7; border-left-color: #5c677d; }
+
+    /* Sub-section cards — lighter shade of parent section */
+    .sub-section {
+      background: rgba(255,255,255,0.5);
+      border-left: 3px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin: 14px 0;
+    }
+
+    #section-1  .sub-section { background: rgba(255,255,255,0.55); border-left-color: #2d6a4f; }
+    #section-2  .sub-section { background: rgba(255,255,255,0.55); border-left-color: #1d3557; }
+    #section-3  .sub-section { background: rgba(255,255,255,0.55); border-left-color: #457b9d; }
+    #section-4  .sub-section { background: rgba(255,255,255,0.55); border-left-color: #4a4e69; }
+    #section-5  .sub-section { background: rgba(255,255,255,0.55); border-left-color: #9d4edd; }
+    #section-6  .sub-section { background: rgba(255,255,255,0.55); border-left-color: #6c757d; }
+    #section-7  .sub-section { background: rgba(255,255,255,0.55); border-left-color: #40916c; }
+    #section-8  .sub-section { background: rgba(255,255,255,0.55); border-left-color: #7b2cbf; }
+    #section-9  .sub-section { background: rgba(255,255,255,0.55); border-left-color: #d4a373; }
+    #section-10 .sub-section { background: rgba(255,255,255,0.55); border-left-color: #5c677d; }
+
+    /* Source cards — used for cited references with URLs */
+    .source-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .source-card blockquote {
+      margin: 0;
+      padding: 0;
+    }
+
+    .source-card p {
+      margin: 8px 0;
+    }
+
+    .source-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .source-url {
+      word-break: break-all;
+      overflow-wrap: break-word;
+    }
+
+    .source-url a {
+      display: block;
+      word-break: break-all;
+    }
+
+    .source-date {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .source-quote {
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    /* Source-specific border colors */
+    .source-card[data-source="rand"]             { border-left-color: #335cff; }
+    .source-card[data-source="brookings"]        { border-left-color: #0f766e; }
+    .source-card[data-source="csis"]             { border-left-color: #8a2be2; }
+    .source-card[data-source="cfr"]              { border-left-color: #ff7f00; }
+    .source-card[data-source="foreign-affairs"]  { border-left-color: #ff0000; }
+    .source-card[data-source="nyt"]              { border-left-color: #ffd700; }
+    .source-card[data-source="washington-post"]  { border-left-color: #008080; }
+    .source-card[data-source="ifri"]             { border-left-color: #ff69b4; }
+
+    .section ul, .section ol { margin: 0; padding-left: 18px; }
+    .section li { margin: 10px 0; }
+
+    .section table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    .section th, .section td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section th {
+      font-weight: 600;
+      background: var(--surface-2);
+    }
+
+    .muted { color: var(--muted); }
+
+    .tagrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent-2);
+      padding: 16px 18px;
+      background: color-mix(in srgb, var(--accent-2) 10%, var(--surface));
+      border-radius: 14px;
+    }
+
+    .danger {
+      border-left-color: var(--danger);
+      background: color-mix(in srgb, var(--danger) 9%, var(--surface));
+    }
+
+    .footer {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      border-top: 1px solid var(--border);
+      margin-top: 30px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* Back-to-top floating button — mobile only */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.25s, transform 0.25s;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .back-to-top:hover {
+      background: var(--surface-2);
+    }
+
+    @media (min-width: 901px) {
+      .back-to-top { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h3 class="toc-title">Contents</h3>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#section-1" class="toc-link">报告摘要 (Executive Summary)</a></li>
+<li class="toc-item"><a href="#section-2" class="toc-link">1. 五青汁的配方与食谱 (Recipe/Formula)</a></li>
+<li class="toc-subitem"><a href="#1-1-1-2" class="toc-sublink">1.1 标准家庭配方（1-2人份）</a></li>
+<li class="toc-subitem"><a href="#1-2-vs" class="toc-sublink">1.2 制作工艺分类：保留渣（搅拌）vs. 去渣（慢磨榨汁）</a></li>
+<li class="toc-subitem"><a href="#1-3" class="toc-sublink">1.3 调味与属性改良版</a></li>
+<li class="toc-item"><a href="#section-3" class="toc-link">2. 五青汁的主要“功效”与科学原理 (Benefits & Principles)</a></li>
+<li class="toc-subitem"><a href="#2-1" class="toc-sublink">2.1 促进肠道蠕动与改善便秘</a></li>
+<li class="toc-subitem"><a href="#2-2" class="toc-sublink">2.2 增加饱足感，辅助体重控制</a></li>
+<li class="toc-subitem"><a href="#2-3" class="toc-sublink">2.3 抗氧化、清除自由基与皮肤保护</a></li>
+<li class="toc-subitem"><a href="#2-4" class="toc-sublink">2.4 辅助血压与体液管理</a></li>
+<li class="toc-subitem"><a href="#2-5" class="toc-sublink">2.5 传统中医理论：清热除烦、降火解毒</a></li>
+<li class="toc-item"><a href="#section-4" class="toc-link">3. 适合人群 (Suitable Crowd)</a></li>
+<li class="toc-item"><a href="#section-5" class="toc-link">4. 重点人群深度解析 (Special Populations Analysis)</a></li>
+<li class="toc-subitem"><a href="#4-1-ra" class="toc-sublink">4.1 类风湿关节炎（RA）患者</a></li>
+<li class="toc-subitem"><a href="#4-2-hypertension" class="toc-sublink">4.2 高血压（Hypertension）患者</a></li>
+<li class="toc-subitem"><a href="#4-3-hypercholesterolemia" class="toc-sublink">4.3 高胆固醇/高血脂（Hypercholesterolemia）患者</a></li>
+<li class="toc-item"><a href="#section-6" class="toc-link">5. 服用五青汁时需要注意什么？(Precautions)</a></li>
+<li class="toc-item"><a href="#section-7" class="toc-link">6. 特别注意人群与饮用量频率参照基准 (Special Care & Dosage Criteria)</a></li>
+<li class="toc-subitem"><a href="#6-1" class="toc-sublink">6.1 必须特别注意的五类特殊人群</a></li>
+<li class="toc-subitem"><a href="#6-2" class="toc-sublink">6.2 敏感/慢病人群如何参照和调整剂量与频率？</a></li>
+<li class="toc-item"><a href="#section-8" class="toc-link">7. 综合参考来源列表 (Sources)</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <div class="wrap">
+        <section class="hero">
+          <div class="eyebrow">Research Report</div>
+          <h1>五青汁（Five Green Juice）功效、配方与慢病人群适用性深研报告</h1>
+          <p class="lede">五青汁（Five Green Juice）是流行于大中华区及华人社区的一种经典绿色植物饮品，由五种青绿色蔬果（青瓜、青苹果、西芹、青椒、苦瓜）新鲜榨取或搅拌而成。
+本报告系统整理了五青汁的科学原理、配方做法以及适用人群。重点针对类风湿关节炎、高血压和高胆固醇三类慢性病人群，深度剖析了饮用五青汁的潜在益处与安全风险。</p>
+          <div class="grid cols-3 section">
+            <div class="card stat">
+              <strong>8</strong>
+              <span>Topic Sections</span>
+            </div>
+            <div class="card stat">
+              <strong>13</strong>
+              <span>Sub-Sections</span>
+            </div>
+            <div class="card stat">
+              <strong>14</strong>
+              <span>Sources Cited</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="section-1" class="section">
+<h2>报告摘要 (Executive Summary)</h2>
+<p>五青汁（Five Green Juice）是流行于大中华区及华人社区的一种经典绿色植物饮品，由五种青绿色蔬果（青瓜、青苹果、西芹、青椒、苦瓜）新鲜榨取或搅拌而成。
+本报告系统整理了五青汁的科学原理、配方做法以及适用人群。重点针对<strong>类风湿关节炎、高血压和高胆固醇</strong>三类慢性病人群，深度剖析了饮用五青汁的潜在益处与安全风险。</p>
+<p>研究表明：
+1. 五青汁的核心价值在于提供高膳食纤维（需连渣饮用）、丰富的钾离子、维生素C、植物多酚以及特异性抗炎化合物（如西芹中的芹菜素、苦瓜中的苦瓜素和多肽-p）。
+2. 五青汁对于调节肠道、辅助控重及抗氧化有积极作用，但它<strong>绝非药物</strong>，不能替代任何医学治疗。
+3. 慢病及特殊人群（如肾病、糖尿病、低血压及脾胃虚寒者）在饮用时，必须以<strong>肾功能、血糖、血压和胃肠耐受度</strong>为基准，严格遵循“从少到多、因人而异、中庸适度”的原则进行剂量和频率的调整。</p>
+</section>
+<section id="section-2" class="section">
+<h2>1. 五青汁的配方与食谱 (Recipe/Formula)</h2>
+<p>五青汁并非严格标准化的医学处方，其配方比例可以根据个人口味与耐受度微调。</p>
+<div class="sub-section" id="1-1-1-2">
+<h3>1.1 标准家庭配方（1-2人份）</h3>
+<ul>
+<li><strong>青苹果（Green Apple）</strong>：1个（约150克），提供果胶（可溶性膳食纤维）及天然甜味以掩盖苦涩。</li>
+<li><strong>苦瓜（Bitter Melon）</strong>：1/4条（约50克），需去籽和白瓤，是五青汁中核心的清热与降糖成分。</li>
+<li><strong>青瓜/黄瓜（Cucumber）</strong>：1/2条或1/4条（约100克），高水分，提供清爽基底。</li>
+<li><strong>青椒/绿甜椒（Green Bell Pepper）</strong>：1/2个或1个（去籽），提供极丰富的维生素C及植物营养素。</li>
+<li><strong>西芹（Celery）</strong>：1至2瓣（约50-100克），富含钾与芹菜素。</li>
+<li>来源参考：
+    <a href="https://zh.wikipedia.org/zh-tw/%E4%BA%94%E9%9D%92%E6%B1%81">Wikipedia｜五青汁</a></li>
+</ul>
+</div>
+<div class="sub-section" id="1-2-vs">
+<h3>1.2 制作工艺分类：保留渣（搅拌）vs. 去渣（慢磨榨汁）</h3>
+<ul>
+<li><strong>保留渣（蔬果昔/Smoothie）</strong>：使用高速搅拌机将所有食材连同膳食纤维打碎成浓稠的浆状。这种方式能够完整保留膳食纤维，血糖反应温和，对便秘和血脂管理效果最佳。</li>
+<li><strong>去渣（纯果蔬汁/Juice）</strong>：使用慢磨榨汁机或滤网去掉果渣。口感极佳，但由于丢失了膳食纤维，其营养价值会大幅缩水，且血糖上升速度较快。</li>
+<li>来源参考：
+    <a href="https://www.harpersbazaar.com.hk/lifestyle/five-green-juice-benefits">Harper’s Bazaar HK｜中醫師、營養師說明五青汁功效和副作用</a></li>
+</ul>
+</div>
+<div class="sub-section" id="1-3">
+<h3>1.3 调味与属性改良版</h3>
+<ul>
+<li>对于脾胃虚寒或极度怕冷的人群，可在搅拌时加入<strong>1-2片生姜或几滴柠檬汁</strong>，以中和五青汁的寒凉属性，同时改善口感。</li>
+<li>来源参考：
+    <a href="https://gojistudios.hk/1074/">Goji Studios｜喝對才有效！五青汁正宗製法全攻略：4步零失敗做法</a></li>
+</ul>
+</div>
+</section>
+<section id="section-3" class="section">
+<h2>2. 五青汁的主要“功效”与科学原理 (Benefits &amp; Principles)</h2>
+<p>五青汁的功效并非源自某种神秘的“排毒”力量，而是源自其所含营养素在体内的生物化学反应。</p>
+<div class="sub-section" id="2-1">
+<h3>2.1 促进肠道蠕动与改善便秘</h3>
+<ul>
+<li><strong>原理</strong>：当五青汁保留果渣时，提供的大量非活性不溶性膳食纤维和可溶性膳食纤维（如果胶）能够增加粪便体积，吸收水分使其变软，并机械性刺激肠道肌肉蠕动，从而改善宿便和便秘。若去掉果渣，此项功效将损失 80% 以上。</li>
+<li>来源参考：
+    <a href="https://www.cuhk.edu.hk/sphpc/cns/Media/Nex_Media_3.10.13.pdf">CUHK 營養研究中心｜單靠五青汁，營養始終有限</a></li>
+</ul>
+</div>
+<div class="sub-section" id="2-2">
+<h3>2.2 增加饱足感，辅助体重控制</h3>
+<ul>
+<li><strong>原理</strong>：膳食纤维能够延缓胃排空速度，减缓小肠对葡萄糖的吸收，从而维持较长时间的饱腹感，避免过量进食。同时，五青汁整体热量极低，是优秀的低卡加餐替代品。</li>
+<li>来源参考：
+    <a href="https://www.healthyd.com/articles/sportsandfood/dont-drink-too-much-vegetable-juice">healthyD｜喝蔬菜汁有助減肥？營養師拆解健康陷阱</a></li>
+</ul>
+</div>
+<div class="sub-section" id="2-3">
+<h3>2.3 抗氧化、清除自由基与皮肤保护</h3>
+<ul>
+<li><strong>原理</strong>：青椒、西芹及青苹果提供了大量的维生素C、多酚类物质、叶绿素以及类黄酮。维生素C是合成人体胶原蛋白的必需辅酶，同时也是强抗氧化剂，能够中和体内的活性氧自由基（ROS），减轻全身氧化应激。</li>
+<li>来源参考：
+    <a href="https://www.philips.com.hk/c-e/ho/philips-chef/recipe-overview-page/drinks-ice-creams/5-green.html">Philips Hong Kong｜健康五青汁做法</a></li>
+</ul>
+</div>
+<div class="sub-section" id="2-4">
+<h3>2.4 辅助血压与体液管理</h3>
+<ul>
+<li><strong>原理</strong>：西芹、青瓜和苦瓜中含有大量的<strong>钾离子</strong>。钾离子能够促进体内多余钠离子的排出，降低外周血管阻力。此外，西芹中富含的<strong>芹菜素（Apigenin）</strong>在药理学上具有舒张血管、减轻内皮细胞炎症的作用。</li>
+<li>来源参考：
+    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11202028/">PubMed Central｜Apigenin: A Promising Molecule for Anti-inflammatory Therapy</a></li>
+</ul>
+</div>
+<div class="sub-section" id="2-5">
+<h3>2.5 传统中医理论：清热除烦、降火解毒</h3>
+<ul>
+<li><strong>原理</strong>：在中医食疗框架中，苦瓜、黄瓜、青椒皆属于寒凉、清热之品。五青汁能够“清热泻火、解暑除烦”，对于体内蕴热、舌红苔黄、容易上火（如口舌生疮、目赤肿痛）的人群有立竿见影的凉血和清热作用。</li>
+<li>来源参考：
+    <a href="https://zh.wikipedia.org/zh-tw/%E4%BA%94%E9%9D%92%E6%B1%81">Wikipedia｜五青汁</a></li>
+</ul>
+</div>
+</section>
+<section id="section-4" class="section">
+<h2>3. 适合人群 (Suitable Crowd)</h2>
+<p>五青汁作为日常膳食补充，适合以下人群作为健康生活方式的一部分：
+1.  <strong>膳食纤维摄入不足者</strong>：日常饮食过于精细，缺乏绿叶蔬菜和粗粮的人群。
+2.  <strong>顽固性便秘人群</strong>：排便不畅、干燥，需要物理性刺激肠蠕动的人群（必须连渣饮用）。
+3.  <strong>内热重、易上火人群</strong>：精力旺盛、体质壮实，经常出现口干舌燥、面部痤疮、口臭、小便黄等热性症状的人。
+4.  <strong>控重管理辅助者</strong>：将其作为正餐前或加餐时的低热量、高饱腹感饮品。
+*   来源参考：
+    <a href="https://www.harpersbazaar.com.hk/lifestyle/five-green-juice-benefits">Harper’s Bazaar HK｜五青汁功效和副作用</a></p>
+</section>
+<section id="section-5" class="section">
+<h2>4. 重点人群深度解析 (Special Populations Analysis)</h2>
+<p>针对类风湿关节炎、高血压及高胆固醇三类高发慢性病人群，五青汁并非百无禁忌，其效应呈现明显的双刃剑特征。</p>
+<div class="sub-section" id="4-1-ra">
+<h3>4.1 类风湿关节炎（RA）患者</h3>
+<p>类风湿关节炎是一种慢性自身免疫性疾病。饮食管理的重点在于<strong>降低体内促炎因子、保护关节及管理体重</strong>。</p>
+<ul>
+<li><strong>强效抗炎分子（芹菜素）</strong>：西芹中富含的芹菜素（Apigenin）是一种著名的黄酮类化合物。Preclinical 药理研究显示，芹菜素能够显著抑制 NF-κB 信号通路，阻断促炎细胞因子（如 TNF-α、IL-6 和 IL-1β）的释放。在关节炎动物模型中，芹菜素展示出减少关节肿胀和保护软骨的潜力。</li>
+<li><strong>抗氧化屏障</strong>：维生素C和多酚类能够降低类风湿关节炎患者关节滑膜腔内的氧化应激水平。</li>
+<li><strong>减轻关节物理负荷</strong>：保留渣的低热量属性有利于肥胖或超重的 RA 患者进行体重管理，从而直接减轻膝、踝等承重关节的机械磨损。</li>
+<li>来源参考：
+    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11202028/">PubMed Central｜Apigenin: A Promising Molecule for Anti-inflammatory Therapy</a>
+<a href="https://caringsunshine.com/relationships/relationship-rheumatoid-arthritis-and-apigenin/">Caring Sunshine｜Relationship between Rheumatoid Arthritis and Apigenin</a></li>
+</ul>
+<ul>
+<li><strong>体质冲突（寒湿阻络型 RA）</strong>：中医学将类风湿关节炎归为“痹症”。如果患者属于“寒湿阻络型”（表现为手脚冰冷、遇冷关节疼痛加重、喜温喜按、经常大便溏泄），五青汁极度寒凉的属性会进一步损伤脾胃阳气，导致“寒上加寒”，从而诱发或加重关节疼痛、胃痛或腹泻。</li>
+<li><strong>药物胃肠不适叠加</strong>：RA 患者通常需要长期服用非甾体抗炎药（NSAIDs，如布洛芬、双氯芬酸钠）。这类药物对胃黏膜有较强的刺激和损伤。而空腹饮用粗纤维且偏寒凉的五青汁，容易导致胃痉挛、胃酸反流或腹胀，加重用药期间的胃肠道脆弱性。</li>
+<li>来源参考：
+    <a href="https://www.lzush.com.cn/Item/11203.aspx">兰州大学第一医院｜风湿免疫科：类风湿关节炎患者的饮食调理</a>
+<a href="https://gojistudios.hk/1074/">Goji Studios｜中醫角度解析五青汁属性</a></li>
+</ul>
+</div>
+<div class="sub-section" id="4-2-hypertension">
+<h3>4.2 高血压（Hypertension）患者</h3>
+<p>高血压患者饮食管理的核心是<strong>促进钠离子排出、血管舒张以及防止心肾并发症</strong>。</p>
+<ul>
+<li><strong>天然的钾钠平衡效应</strong>：五青汁（特别是西芹、青瓜、苦瓜）的钾含量极高。钾是体内天然的“利钠排尿”物质。摄入充足的钾能促使肾脏排出多余的钠，从而降低细胞外液容量，具有明确的辅助降低血压效果，符合高血压权威膳食指南（DASH 饮食原则）。</li>
+<li><strong>血管舒张</strong>：西芹中的芹菜素、黄瓜中的多酚物质可促进血管内皮细胞释放一氧化氮（NO），发挥血管舒张及抗动脉粥样硬化的保护作用。</li>
+<li>来源参考：
+    <a href="https://zh.wikipedia.org/zh-tw/%E4%BA%94%E9%9D%92%E6%B1%81">Wikipedia｜五青汁与钾</a>
+<a href="https://www.tandfonline.com/doi/full/10.1080/10942912.2020.1833916">Taylor &amp; Francis｜Evaluation of anti-hypertensive potential of bitter melon (Momordica charantia)</a></li>
+</ul>
+<ul>
+<li><strong>致命的高钾血症风险（合并肾病者）</strong>：长期重度高血压常伴随不同程度的肾小球硬化或慢性肾功能不全。如果高血压患者合并慢性肾脏病（CKD），或者正在服用以下降压药：<ol>
+<li><strong>ACEI类</strong>（如普利类）/ <strong>ARB类</strong>（如沙坦类）降压药；</li>
+<li><strong>保钾利尿剂</strong>（如螺内酯/安体舒通）。
+这些药物本身会抑制肾脏排钾。此时若大量饮用富含钾的五青汁，极易引发<strong>高钾血症（Hyperkalemia）</strong>。血钾浓度过高会导致严重的肌肉无力、心动过缓，甚至导致突发性心跳骤停。</li>
+</ol>
+</li>
+<li><strong>血压过度波动导致头晕</strong>：本身基础血压偏低，或者对降压药物反应极为敏感的高血压患者，在饮用五青汁后可能出现协同降压作用，导致血压骤降，出现体位性低血压、头晕、冷汗或乏力。</li>
+<li>来源参考：
+    <a href="https://www.harpersbazaar.com.hk/lifestyle/five-green-juice-benefits">Harper’s Bazaar HK｜中醫師、營養師說明五青汁功效和副作用</a></li>
+</ul>
+<ol>
+<li><strong>ACEI类</strong>（如普利类）/ <strong>ARB类</strong>（如沙坦类）降压药；</li>
+<li><strong>保钾利尿剂</strong>（如螺内酯/安体舒通）。
+这些药物本身会抑制肾脏排钾。此时若大量饮用富含钾的五青汁，极易引发<strong>高钾血症（Hyperkalemia）</strong>。血钾浓度过高会导致严重的肌肉无力、心动过缓，甚至导致突发性心跳骤停。</li>
+</ol>
+</div>
+<div class="sub-section" id="4-3-hypercholesterolemia">
+<h3>4.3 高胆固醇/高血脂（Hypercholesterolemia）患者</h3>
+<p>血脂管理的关键是<strong>阻止外源性胆固醇在肠道的吸收、促进体内胆固醇转化为胆汁酸排出，以及防止低密度脂蛋白（LDL）被氧化</strong>。</p>
+<ul>
+<li><strong>膳食纤维结合胆汁酸</strong>：如果五青汁保留了果渣，其中的可溶性膳食纤维（如青苹果中的果胶、西芹的粘多糖）进入肠道后会形成黏性胶体，能够物理性包裹并结合肠道内的胆汁酸及食物中的胆固醇。这会促使胆汁酸随粪便排出，迫使肝脏动用体内的低密度脂蛋白胆固醇（LDL-C）来合成新的胆汁酸，从而达到降低血液中低密度脂蛋白和总胆固醇的效果。</li>
+<li><strong>苦瓜的调节脂质代谢作用</strong>：多项药理研究及 Meta 分析显示，苦瓜（Momordica charantia）中的皂苷（Saponins）和多肽类活性成分具有明确的降血脂作用（Hypolipidemic effect）。它能激活体内单磷酸腺苷活化蛋白激酶（AMPK）通路，调节脂质合成基因，抑制极低密度脂蛋白（VLDL）的合成，加速甘油三酯和胆固醇的水解。</li>
+<li>来源参考：
+    <a href="https://www.pharmajournal.net/article/103/4-1-19-825.pdf">The Pharma Journal｜Hypolipidemic and cardiovascular protection by Momordica charantia</a>
+<a href="https://www.cuhk.edu.hk/sphpc/cns/Media/Nex_Media_3.10.13.pdf">CUHK 營養研究中心｜單靠五青汁，營養始終有限</a></li>
+</ul>
+<ul>
+<li><strong>糖分转化为脂肪（去渣或加糖版本）</strong>：许多人在制作五青汁时为了掩盖苦瓜和青椒的苦涩，会大幅提高<strong>青苹果</strong>的比例，或额外添加<strong>大量蜂蜜、枫糖</strong>。如果滤去果渣，高浓度的果糖将迅速被肠道吸收。果糖在肝脏中极易转化为甘油三酯，不仅不能降低胆固醇，反而会加重高甘油三酯血症，甚至诱发脂肪肝，抵消其所有正面效果。</li>
+<li><strong>膳食纤维流失风险</strong>：若滤除果渣，仅喝“青色纯汁”，其结合胆固醇的核心机制（膳食纤维）将完全丧失。</li>
+<li>来源参考：
+    <a href="https://www.healthyd.com/articles/sportsandfood/dont-drink-too-much-vegetable-juice">healthyD｜喝蔬菜汁有助減肥？營養師拆解健康陷阱</a></li>
+</ul>
+</div>
+</section>
+<section id="section-6" class="section">
+<h2>5. 服用五青汁时需要注意什么？(Precautions)</h2>
+<p>要安全、高效地获取五青汁的营养，必须注意以下几点：</p>
+<ol>
+<li><strong>坚决连渣饮用</strong>：膳食纤维是五青汁的灵魂。去渣的五青汁等同于一杯“寒凉的糖水”，其通便、控血脂、延缓血糖上升的作用几乎全部消失。<ul>
+<li>来源参考：<a href="https://www.cuhk.edu.hk/sphpc/cns/Media/Nex_Media_3.10.13.pdf">CUHK 營養研究中心｜生果各一份,但單靠五青汁,營養始終有限</a></li>
+</ul>
+</li>
+<li><strong>严控糖分摄入</strong>：不要为了追求口感而添加蜂蜜，且应严格控制青苹果的用量（不超过 1 个），以防止果糖超标。<ul>
+<li>来源参考：<a href="https://www.healthyd.com/articles/sportsandfood/dont-drink-too-much-vegetable-juice">healthyD｜五青汁｜喝蔬菜汁有助減肥？營養師拆解健康陷阱</a></li>
+</ul>
+</li>
+<li><strong>现做现喝，严防氧化</strong>：蔬果切开、打碎后，维生素C和活性多酚在空气中极易被氧化失效。搅拌后应在 <strong>15至30分钟内</strong> 饮用完毕，避免长时间暴露。<ul>
+<li>来源参考：<a href="https://www.cosmopolitan.com.hk/cosmobody/five-green-juice-benefits">Cosmopolitan HK｜五青汁功效全面睇</a></li>
+</ul>
+</li>
+<li><strong>避免空腹饮用冰镇版</strong>：早晨空腹饮用冰镇五青汁，对胃肠道黏膜的物理刺激极强，易引发肠胃痉挛和急性腹泻。建议在<strong>室温</strong>下饮用，胃肠敏感者可在餐后 1 小时或下午饮用。<ul>
+<li>来源参考：<a href="https://ufood.com.hk/recipe/detail/20047628/1%E5%88%86%E9%90%98%E6%B8%9B%E8%82%A5%E6%8E%92%E6%AF%92%E4%BA%94%E9%9D%92%E6%B1%81%E9%A3%9F%E8%AD%9C-4%E9%A1%9E%E4%BA%BA%E5%A3%AB%E5%BF%8C%E9%A3%B2-%E8%B6%85%E9%AB%98%E7%BA%96%E6%8E%92%E4%BE%BF%E5%BF%85%E9%A3%B2">UFood｜1分鐘減肥排毒五青汁食譜</a></li>
+</ul>
+</li>
+<li><strong>彻底清洗，严防农药残留</strong>：由于是生食蔬果且不去皮，必须使用流动的清水彻底清洗西芹、青瓜等，或选用有机认证食材。<ul>
+<li>来源参考：<a href="https://www.cosmopolitan.com.hk/cosmobody/five-green-juice-benefits">Cosmopolitan HK｜五青汁功效全面睇</a></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>来源参考：<a href="https://www.cuhk.edu.hk/sphpc/cns/Media/Nex_Media_3.10.13.pdf">CUHK 營養研究中心｜生果各一份,但單靠五青汁,營養始終有限</a></li>
+</ul>
+<ul>
+<li>来源参考：<a href="https://www.healthyd.com/articles/sportsandfood/dont-drink-too-much-vegetable-juice">healthyD｜五青汁｜喝蔬菜汁有助減肥？營養師拆解健康陷阱</a></li>
+</ul>
+<ul>
+<li>来源参考：<a href="https://www.cosmopolitan.com.hk/cosmobody/five-green-juice-benefits">Cosmopolitan HK｜五青汁功效全面睇</a></li>
+</ul>
+<ul>
+<li>来源参考：<a href="https://ufood.com.hk/recipe/detail/20047628/1%E5%88%86%E9%90%98%E6%B8%9B%E8%82%A5%E6%8E%92%E6%AF%92%E4%BA%94%E9%9D%92%E6%B1%81%E9%A3%9F%E8%AD%9C-4%E9%A1%9E%E4%BA%BA%E5%A3%AB%E5%BF%8C%E9%A3%B2-%E8%B6%85%E9%AB%98%E7%BA%96%E6%8E%92%E4%BE%BF%E5%BF%85%E9%A3%B2">UFood｜1分鐘減肥排毒五青汁食譜</a></li>
+</ul>
+<ul>
+<li>来源参考：<a href="https://www.cosmopolitan.com.hk/cosmobody/five-green-juice-benefits">Cosmopolitan HK｜五青汁功效全面睇</a></li>
+</ul>
+</section>
+<section id="section-7" class="section">
+<h2>6. 特别注意人群与饮用量频率参照基准 (Special Care &amp; Dosage Criteria)</h2>
+<p>以下特殊敏感人群在饮用五青汁时必须高度警惕，绝不能盲目遵循常规配方和频次。</p>
+<div class="sub-section" id="6-1">
+<h3>6.1 必须特别注意的五类特殊人群</h3>
+<ol>
+<li><strong>慢性肾脏病（CKD）及高血钾患者</strong>：肾排钾功能受损，高钾极度危险。</li>
+<li><strong>糖尿病患者</strong>：需严防果糖导致的血糖大幅波动。</li>
+<li><strong>基础血压偏低者</strong>：五青汁的利尿排钠和舒张血管效应可能导致血压过低、头晕。</li>
+<li><strong>脾胃虚寒、易腹泻、痛经女性</strong>：寒凉蔬果易导致胃寒疼痛、泄泻、加重宫寒痛经。</li>
+<li><strong>月经期间女性</strong>：经期盆腔充血，应避免饮用寒凉之物以防经血淤滞、痛经加重。</li>
+<li>来源参考：
+    <a href="https://www.harpersbazaar.com.hk/lifestyle/five-green-juice-benefits">Harper’s Bazaar HK｜五青汁功效和副作用</a>
+<a href="https://www.sundaymore.com/%E5%A5%B3%E6%80%A7%E5%81%A5%E5%BA%B7/five-green-juice-1666076/">SundayMore｜中醫解析五青汁女性飲用禁忌</a></li>
+</ol>
+</div>
+<div class="sub-section" id="6-2">
+<h3>6.2 敏感/慢病人群如何参照和调整剂量与频率？</h3>
+<p>慢病和敏感人群<strong>没有统一的“安全标准剂量”</strong>。应以以下<strong>四大身体指标</strong>作为个体化的参照基准：</p>
+<ul>
+<li><strong>基准线</strong>：若体检发现 <strong>血钾 &gt; 5.0 mmol/L</strong>，或肾功能分期属于 <strong>CKD 3期及以上（eGFR &lt; 60 mL/min/1.73m²）</strong>。</li>
+<li><strong>剂量与频率调整</strong>：<ul>
+<li><strong>肾功能及血钾正常者</strong>：每周可饮用 2-3 次，每次 150-200 毫升。</li>
+<li><strong>CKD 3期或血钾偏高者</strong>：<strong>严禁饮用五青汁</strong>。日常应避免高钾食物，防止发生危及生命的高钾血症。</li>
+</ul>
+</li>
+<li>来源参考：
+    <a href="https://www.harpersbazaar.com.hk/lifestyle/five-green-juice-benefits">Harper’s Bazaar HK｜中醫師、營養師說明五青汁功效和副作用</a></li>
+</ul>
+<ul>
+<li><strong>肾功能及血钾正常者</strong>：每周可饮用 2-3 次，每次 150-200 毫升。</li>
+<li><strong>CKD 3期或血钾偏高者</strong>：<strong>严禁饮用五青汁</strong>。日常应避免高钾食物，防止发生危及生命的高钾血症。</li>
+</ul>
+<ul>
+<li><strong>基准线</strong>：糖尿病患者在饮用含有青苹果的五青汁后，餐后 2 小时血糖升高幅度是否 <strong>超过 2.0 mmol/L</strong>。</li>
+<li><strong>剂量与频率调整</strong>：<ul>
+<li><strong>基准波动大（血糖上升明显）</strong>：必须将苹果分量减少至 <strong>1/4 个或完全不加苹果</strong>，以纯蔬菜（增加青瓜比例）打汁；且每次饮用量限制在 <strong>100 毫升以内</strong>，每周不超过 1 次，并选择在两餐之间饮用，避免餐后立即饮用。</li>
+<li><strong>血糖平稳者</strong>：可维持每次 150 毫升，选择<strong>保留果渣</strong>版本，每周 2 次。</li>
+</ul>
+</li>
+<li>来源参考：
+    <a href="https://www.harpersbazaar.com.hk/lifestyle/five-green-juice-benefits">Harper’s Bazaar HK｜中醫師、營養師說明五青汁功效和副作用</a></li>
+</ul>
+<ul>
+<li><strong>基准波动大（血糖上升明显）</strong>：必须将苹果分量减少至 <strong>1/4 个或完全不加苹果</strong>，以纯蔬菜（增加青瓜比例）打汁；且每次饮用量限制在 <strong>100 毫升以内</strong>，每周不超过 1 次，并选择在两餐之间饮用，避免餐后立即饮用。</li>
+<li><strong>血糖平稳者</strong>：可维持每次 150 毫升，选择<strong>保留果渣</strong>版本，每周 2 次。</li>
+</ul>
+<ul>
+<li><strong>基准线</strong>：收缩压是否 <strong>低于 90 mmHg</strong>，或饮用后 1 小时内是否出现头晕、轻微站立不稳或全身乏力。</li>
+<li><strong>剂量与频率调整</strong>：<ul>
+<li><strong>有头晕或收缩压低于 90 mmHg</strong>：说明五青汁的利尿降压效应过强。应<strong>立即停止饮用</strong>。若想再次尝试，剂量必须缩减至每次 <strong>50 毫升（约1-2口）</strong>，稀释一倍温水后于下午饮用，每周不超过 1 次。</li>
+<li><strong>血压平稳且无不适者</strong>：可维持每周 2-3 次，每次 150 毫升。</li>
+</ul>
+</li>
+<li>来源参考：
+    <a href="https://zh.wikipedia.org/zh-tw/%E4%BA%94%E9%9D%92%E6%B1%81">Wikipedia｜五青汁</a></li>
+</ul>
+<ul>
+<li><strong>有头晕或收缩压低于 90 mmHg</strong>：说明五青汁的利尿降压效应过强。应<strong>立即停止饮用</strong>。若想再次尝试，剂量必须缩减至每次 <strong>50 毫升（约1-2口）</strong>，稀释一倍温水后于下午饮用，每周不超过 1 次。</li>
+<li><strong>血压平稳且无不适者</strong>：可维持每周 2-3 次，每次 150 毫升。</li>
+</ul>
+<ul>
+<li><strong>基准线</strong>：参照布里斯托大便分类法（Bristol Stool Chart）。若饮用后出现大便变稀（5-7型）、腹泻、胃部冰冷疼痛、腹胀。</li>
+<li><strong>剂量与频率调整</strong>：<ul>
+<li><strong>出现胃痛或泄泻者</strong>：证明体质偏虚寒或胃黏膜敏感。必须<strong>立即暂停饮用</strong>。如若继续饮用，必须采取改良配方：<strong>减少苦瓜和西芹的比例，加入 2 片生姜共同搅拌</strong>，且将冷饮改为<strong>隔水加热至微温</strong>，每次仅饮用 <strong>50 毫升</strong>，每周不超过 1 次。</li>
+<li><strong>排便改善且胃肠无不适者</strong>：证明耐受良好，可作为膳食补充，每周 2-3 次，每次 200 毫升。</li>
+</ul>
+</li>
+<li>来源参考：
+    <a href="https://gojistudios.hk/1074/">Goji Studios｜喝對才有效！五青汁正宗製法全攻略：4步零失敗做法</a>
+<a href="https://ufood.com.hk/recipe/detail/20047628/1%E5%88%86%E9%90%98%E6%B8%9B%E8%82%A5%E6%8E%92%E6%AF%92%E4%BA%94%E9%9D%92%E6%B1%81%E9%A3%9F%E8%AD%9C-4%E9%A1%9E%E4%BA%BA%E5%A3%AB%E5%BF%8C%E9%A3%B2-%E8%B6%85%E9%AB%98%E7%BA%96%E6%8E%92%E4%BE%BF%E5%BF%85%E9%A3%B2">UFood｜1分鐘減肥排毒五青汁食譜</a></li>
+</ul>
+<ul>
+<li><strong>出现胃痛或泄泻者</strong>：证明体质偏虚寒或胃黏膜敏感。必须<strong>立即暂停饮用</strong>。如若继续饮用，必须采取改良配方：<strong>减少苦瓜和西芹的比例，加入 2 片生姜共同搅拌</strong>，且将冷饮改为<strong>隔水加热至微温</strong>，每次仅饮用 <strong>50 毫升</strong>，每周不超过 1 次。</li>
+<li><strong>排便改善且胃肠无不适者</strong>：证明耐受良好，可作为膳食补充，每周 2-3 次，每次 200 毫升。</li>
+</ul>
+</div>
+</section>
+<section id="section-8" class="section">
+<h2>7. 综合参考来源列表 (Sources)</h2>
+<ol>
+<li><strong>五青汁成分与中医/营养学基础评估</strong>：<ul>
+<li><a href="https://zh.wikipedia.org/zh-tw/%E4%BA%94%E9%9D%92%E6%B1%81">Wikipedia｜五青汁</a></li>
+</ul>
+</li>
+<li><strong>注册营养师与中医师的综合意见（功效、副作用及禁忌）</strong>：<ul>
+<li><a href="https://www.harpersbazaar.com.hk/lifestyle/five-green-juice-benefits">Harper’s Bazaar HK｜做法簡單，但可以每天喝嗎？中醫師、營養師說明五青汁功效和副作用</a></li>
+</ul>
+</li>
+<li><strong>五青汁正宗做法、加生姜改善寒性方法</strong>：<ul>
+<li><a href="https://gojistudios.hk/1074/">Goji Studios｜喝對才有效！五青汁正宗製法全攻略：4步零失敗做法</a></li>
+</ul>
+</li>
+<li><strong>营养价值限制与膳食平衡分析</strong>：<ul>
+<li><a href="https://www.cuhk.edu.hk/sphpc/cns/Media/Nex_Media_3.10.13.pdf">香港中文大學營養研究中心｜單靠五青汁，營養始終有限</a></li>
+</ul>
+</li>
+<li><strong>鲜榨果蔬汁膳食纤维、去渣与体重控制的陷阱</strong>：<ul>
+<li><a href="https://www.healthyd.com/articles/sportsandfood/dont-drink-too-much-vegetable-juice">healthyD｜喝蔬菜汁有助減肥？營養師拆解健康陷阱</a></li>
+</ul>
+</li>
+<li><strong>五青汁制作配比、防氧化及胃肠反应注意事项</strong>：<ul>
+<li><a href="https://www.cosmopolitan.com.hk/cosmobody/five-green-juice-benefits">Cosmopolitan HK｜清毒抗衰老：五青汁功效全面睇</a></li>
+</ul>
+</li>
+<li><strong>西芹中芹菜素（Apigenin）抗炎与抑制 NF-κB 通路的药理学文献</strong>：<ul>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11202028/">PubMed Central｜Apigenin: A Promising Molecule for Anti-inflammatory Therapy</a></li>
+</ul>
+</li>
+<li><strong>芹菜素对类风湿关节炎、软骨保护的作用评估</strong>：<ul>
+<li><a href="https://caringsunshine.com/relationships/relationship-rheumatoid-arthritis-and-apigenin/">Caring Sunshine｜Relationship between Rheumatoid Arthritis and Apigenin</a></li>
+</ul>
+</li>
+<li><strong>苦瓜（Momordica charantia）降血脂、改善脂质代谢的文献</strong>：<ul>
+<li><a href="https://www.pharmajournal.net/article/103/4-1-19-825.pdf">The Pharma Journal｜Hypolipidemic and cardiovascular protection by Momordica charantia</a></li>
+</ul>
+</li>
+<li><strong>苦瓜降血压潜力的 Meta 分析与临床药理评估</strong>：<ul>
+<li><a href="https://www.tandfonline.com/doi/full/10.1080/10942912.2020.1833916">Taylor &amp; Francis｜Evaluation of anti-hypertensive potential of bitter melon (Momordica charantia)</a></li>
+</ul>
+</li>
+<li><strong>风湿免疫疾病患者饮食调摄中医观点</strong>：<ul>
+<li><a href="https://www.lzush.com.cn/Item/11203.aspx">兰州大学第一医院｜风湿免疫科：类风湿关节炎患者的饮食调理</a></li>
+</ul>
+</li>
+<li><strong>五青汁女性月经、痛经饮用限制</strong>：<ul>
+<li><a href="https://www.sundaymore.com/%E5%A5%B3%E6%80%A7%E5%81%A5%E5%BA%B7/five-green-juice-1666076/">SundayMore｜五青汁功效、禁忌中醫師拆解</a></li>
+</ul>
+</li>
+<li><strong>五青汁胃肠受损及空腹不宜饮用食谱指引</strong>：<ul>
+<li><a href="https://ufood.com.hk/recipe/detail/20047628/1%E5%88%86%E9%90%98%E6%B8%9B%E8%82%A5%E6%8E%92%E6%AF%92%E4%BA%94%E9%9D%92%E6%B1%81%E9%A3%9F%E8%AD%9C-4%E9%A1%9E%E4%BA%BA%E5%A3%AB%E5%BF%8C%E9%A3%B2-%E8%B6%85%E9%AB%98%E7%BA%96%E6%8E%92%E4%BE%BF%E5%BF%85%E9%A3%B2">UFood｜1分鐘減肥排毒五青汁食譜：4類人士忌飲</a></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><a href="https://zh.wikipedia.org/zh-tw/%E4%BA%94%E9%9D%92%E6%B1%81">Wikipedia｜五青汁</a></li>
+</ul>
+<ul>
+<li><a href="https://www.harpersbazaar.com.hk/lifestyle/five-green-juice-benefits">Harper’s Bazaar HK｜做法簡單，但可以每天喝嗎？中醫師、營養師說明五青汁功效和副作用</a></li>
+</ul>
+<ul>
+<li><a href="https://gojistudios.hk/1074/">Goji Studios｜喝對才有效！五青汁正宗製法全攻略：4步零失敗做法</a></li>
+</ul>
+<ul>
+<li><a href="https://www.cuhk.edu.hk/sphpc/cns/Media/Nex_Media_3.10.13.pdf">香港中文大學營養研究中心｜單靠五青汁，營養始終有限</a></li>
+</ul>
+<ul>
+<li><a href="https://www.healthyd.com/articles/sportsandfood/dont-drink-too-much-vegetable-juice">healthyD｜喝蔬菜汁有助減肥？營養師拆解健康陷阱</a></li>
+</ul>
+<ul>
+<li><a href="https://www.cosmopolitan.com.hk/cosmobody/five-green-juice-benefits">Cosmopolitan HK｜清毒抗衰老：五青汁功效全面睇</a></li>
+</ul>
+<ul>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11202028/">PubMed Central｜Apigenin: A Promising Molecule for Anti-inflammatory Therapy</a></li>
+</ul>
+<ul>
+<li><a href="https://caringsunshine.com/relationships/relationship-rheumatoid-arthritis-and-apigenin/">Caring Sunshine｜Relationship between Rheumatoid Arthritis and Apigenin</a></li>
+</ul>
+<ul>
+<li><a href="https://www.pharmajournal.net/article/103/4-1-19-825.pdf">The Pharma Journal｜Hypolipidemic and cardiovascular protection by Momordica charantia</a></li>
+</ul>
+<ul>
+<li><a href="https://www.tandfonline.com/doi/full/10.1080/10942912.2020.1833916">Taylor &amp; Francis｜Evaluation of anti-hypertensive potential of bitter melon (Momordica charantia)</a></li>
+</ul>
+<ul>
+<li><a href="https://www.lzush.com.cn/Item/11203.aspx">兰州大学第一医院｜风湿免疫科：类风湿关节炎患者的饮食调理</a></li>
+</ul>
+<ul>
+<li><a href="https://www.sundaymore.com/%E5%A5%B3%E6%80%A7%E5%81%A5%E5%BA%B7/five-green-juice-1666076/">SundayMore｜五青汁功效、禁忌中醫師拆解</a></li>
+</ul>
+<ul>
+<li><a href="https://ufood.com.hk/recipe/detail/20047628/1%E5%88%86%E9%90%98%E6%B8%9B%E8%82%A5%E6%8E%92%E6%AF%92%E4%BA%94%E9%9D%92%E6%B1%81%E9%A3%9F%E8%AD%9C-4%E9%A1%9E%E4%BA%BA%E5%A3%AB%E5%BF%8C%E9%A3%B2-%E8%B6%85%E9%AB%98%E7%BA%96%E6%8E%92%E4%BE%BF%E5%BF%85%E9%A3%B2">UFood｜1分鐘減肥排毒五青汁食譜：4類人士忌飲</a></li>
+</ul>
+<blockquote>
+<p><strong>🚨 声明与免责条款</strong>：本报告所含信息仅作为营养和一般健康常识参考，不构成任何医疗诊断、用药指导或临床治疗建议。个体差异极显著，慢性病及正在服药的人群（尤其是合并肾功能不全、高血压用药或糖尿病用药者）在改变饮食习惯、开始规律饮用五青汁前，<strong>请务必咨询您的专科主治医生、中医师或注册营养师</strong>。</p>
+</blockquote>
+<p><strong>🚨 声明与免责条款</strong>：本报告所含信息仅作为营养和一般健康常识参考，不构成任何医疗诊断、用药指导或临床治疗建议。个体差异极显著，慢性病及正在服药的人群（尤其是合并肾功能不全、高血压用药或糖尿病用药者）在改变饮食习惯、开始规律饮用五青汁前，<strong>请务必咨询您的专科主治医生、中医师或注册营养师</strong>。</p>
+</section>
+
+        <footer class="footer">
+          <p>Oracle Research — 五青汁（Five Green Juice）功效、配方与慢病人群适用性深研报告</p>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">&#9650;</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.section[id]');
+      const tocLinks = document.querySelectorAll('.toc-link, .toc-sublink');
+      function updateActiveLink() {
+        let current = '';
+        sections.forEach(function(s) {
+          if (pageYOffset >= s.offsetTop - 100) current = s.getAttribute('id');
+        });
+        tocLinks.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+        });
+      }
+      window.addEventListener('scroll', updateActiveLink);
+      updateActiveLink();
+
+      // Back-to-top button — visible after 300px scroll
+      const btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('visible', pageYOffset > 300);
+      });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
